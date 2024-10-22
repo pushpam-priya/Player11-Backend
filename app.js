@@ -5,10 +5,13 @@ require('dotenv').config();
 const teamRoutes = require('./routes/teamRoutes.jsx');
 const playerRoutes = require('./routes/playerRoutes.jsx');
 const matchRoutes = require('./routes/matchRoutes.jsx');
+const cors = require('cors');
 
  
 const app = express();
-connectDB(); // Connect to MongoDB Atlas
+app.use(cors());
+app.use(express.json());
+connectDB();
 
 app.use(bodyParser.json());
 app.get('/', (req, res) => res.send('Fantasy Cricket API'));
